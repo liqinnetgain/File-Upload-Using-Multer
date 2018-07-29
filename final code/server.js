@@ -16,8 +16,8 @@ var userRoutes   = require('./routes/user');
 // set up our express application
 app.use(morgan('dev')); // log every request to the console
 app.use(cookieParser()); // read cookies (needed for auth)
-app.use(bodyParser.json()); // get information from html forms
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true, limit: '50mb', parameterLimit: 1000000}));
+app.use(bodyParser.json({ limit: '50mb', extended: true })); 
 
 // required for passport
 app.use(session({
